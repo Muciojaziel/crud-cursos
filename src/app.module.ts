@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { CursosModule } from './cursos/cursos.module';
+import { CursoModule } from './cursos/curso.module';
 
 @Module({
   imports: [
@@ -22,7 +21,7 @@ import { CursosModule } from './cursos/cursos.module';
       migrationsRun: true,
       synchronize: true, // P.s: atributo que não deve ir à prod
     }),
-    CursosModule,
+    CursoModule,
   ],
   controllers: [],
   providers: [],
