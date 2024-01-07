@@ -8,14 +8,14 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CursoDto } from '../dto/create-curso.dto';
 import { UpdateCursoDto } from '../dto/update-curso.dto';
-import { AssemblerUtil } from 'src/utils/assemblerUtil.service';
+import { AssemblerUtilService } from '../../utils/assembler-util.service';
 
 @Injectable()
-export class CursosService {
+export class CursoService {
   constructor(
     @InjectRepository(Curso)
     private readonly cursosRepository: Repository<Curso>,
-    private assemblerUtil: AssemblerUtil,
+    private assemblerUtil: AssemblerUtilService,
   ) {}
 
   async findAll(): Promise<Curso[]> {
@@ -60,8 +60,9 @@ export class CursosService {
       where: { id },
     });
 
-    if (!cursoProcurado)
+    if (!cursoProcurado) {
       throw new NotFoundException(`Curso com Id: ${id} não encontrado`);
+    }
 
     return cursoProcurado;
   }

@@ -11,14 +11,14 @@ import {
   Put,
 } from '@nestjs/common';
 
-import { CursosService } from '../service/curso.service';
+import { CursoService } from '../service/curso.service';
 import { Curso } from '../entities/curso.entity';
 import { CursoDto } from '../dto/create-curso.dto';
 import { UpdateCursoDto } from '../dto/update-curso.dto';
 
 @Controller('cursos')
 export class CursosController {
-  constructor(private readonly cursosService: CursosService) {}
+  constructor(private readonly cursosService: CursoService) {}
 
   @Get()
   async listAll(): Promise<Curso[]> {
