@@ -1,7 +1,6 @@
 import { Certificado } from '@/certificado/entities/certificado.entity';
 import { CertificadoService } from '@/certificado/certificado.service';
-import { Curso } from '@cursos/entities/curso.entity';
-import { Controller, Get, Injectable, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Certificado')

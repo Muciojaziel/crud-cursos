@@ -1,4 +1,3 @@
-
 import { Controller, Get, Injectable, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { MatriculaService } from './matricula.service';
