@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CursoService } from '../service/curso.service';
+import { CursoService } from '../curso.service';
 import { Curso } from '../entities/curso.entity';
-import { CursosController } from './curso.controller';
+import { CursosController } from '../curso.controller';
 import { mockCurso } from '@cursos/__mocks__/curso.mock';
 
 describe('CursosController', () => {

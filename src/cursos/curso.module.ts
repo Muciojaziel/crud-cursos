@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CursosController } from './controller/curso.controller';
-import { CursoService } from './service/curso.service';
+import { CursosController } from './curso.controller';
+import { CursoService } from './curso.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AssemblerUtilService } from '../utils/assembler-util.service';
 import { Curso } from './entities/curso.entity';

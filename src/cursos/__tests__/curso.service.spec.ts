@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CursoService } from './curso.service';
+import { CursoService } from '../curso.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Curso } from '../entities/curso.entity';
 import { mockCurso } from '../__mocks__/curso.mock';

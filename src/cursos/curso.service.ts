@@ -3,12 +3,11 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { Curso } from '../entities/curso.entity';
+import { Curso } from './entities/curso.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CursoDto } from '../dto/create-curso.dto';
-import { UpdateCursoDto } from '../dto/update-curso.dto';
-import { AssemblerUtilService } from '../../utils/assembler-util.service';
+import { CursoDto } from './dto/create-curso.dto';
+import { AssemblerUtilService } from '../utils/assembler-util.service';
 
 @Injectable()
 export class CursoService {
@@ -46,7 +45,7 @@ export class CursoService {
     }
   }
 
-  async update(id: number, dto: UpdateCursoDto): Promise<void> {
+  async update(id: number, dto: CursoDto): Promise<void> {
     const cursoProcurado = await this.buscarOuFalhar(id);
 
     if (cursoProcurado) {

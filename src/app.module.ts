@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CursoModule } from './cursos/curso.module';
+import { CertificadoModule } from './certificado/certificado.module';
+import { EstudanteController } from './estudante/estudante.controller';
+import { EstudanteModule } from './estudante/estudante.module';
+import { MatriculaModule } from './matricula/matricula.module';
 
 @Module({
   imports: [
@@ -22,8 +26,11 @@ import { CursoModule } from './cursos/curso.module';
       synchronize: true, // P.s: atributo que não deve ir à prod
     }),
     CursoModule,
+    CertificadoModule,
+    EstudanteModule,
+    MatriculaModule,
   ],
-  controllers: [],
+  controllers: [EstudanteController],
   providers: [],
 })
 export class AppModule {}

@@ -11,16 +11,19 @@ import {
   Put,
 } from '@nestjs/common';
 
-import { CursoService } from '../service/curso.service';
-import { Curso } from '../entities/curso.entity';
-import { CursoDto } from '../dto/create-curso.dto';
-import { UpdateCursoDto } from '../dto/update-curso.dto';
+import { CursoService } from './curso.service';
+import { Curso } from './entities/curso.entity';
+import { CursoDto } from './dto/create-curso.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Cursos')
 @Controller('cursos')
 export class CursosController {
   constructor(private readonly cursosService: CursoService) {}
 
   @Get()
+  @ApiResponse({ status: 200, description: 'Lista de cursos.', type: CursoDto})
+  @ApiResponse({ status: 403, description: 'Acesso permitido somente à perfil administrador.'})
   async listAll(): Promise<Curso[]> {
     return await this.cursosService.findAll();
   }
@@ -31,6 +34,8 @@ export class CursosController {
   }
 
   @Post()
+  @ApiResponse({ status: 201, description: 'Curso criado com sucesso.', type: CursoDto})
+  @ApiResponse({ status: 403, description: 'Acesso permitido somente à perfil administrador.'})
   @HttpCode(HttpStatus.CREATED)
   async createCurso(@Body() cursoDto: CursoDto) {
     return await this.cursosService.create(cursoDto);
@@ -46,7 +51,7 @@ export class CursosController {
   @HttpCode(HttpStatus.OK)
   async updateCurso(
     @Param('id', ParseIntPipe) id: number,
-    @Body() dto: UpdateCursoDto,
+    @Body() dto: CursoDto,
   ): Promise<void> {
     await this.cursosService.update(id, dto);
   }
